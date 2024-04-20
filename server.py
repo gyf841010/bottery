@@ -28,6 +28,7 @@ logging.basicConfig(level=logging.DEBUG,
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
+            (r'/', calcHandler),
             (r'/calc/gen', calcHandler),
         ]
         configs = dict(
