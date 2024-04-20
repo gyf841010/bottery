@@ -91,7 +91,7 @@ class calcHandler(BaseHandler):
             with open(f_dir, 'r') as f:
                 lottery = [int(str) for str in f.readline().split(',')]
 
-        return self.write(json.JSONEncoder().encode({'status': 0, 'lottery': lottery}))
+        return self.write(json.JSONEncoder().encode({'date': today, 'lottery': lottery}))
 
 
 if __name__ == "__main__":
