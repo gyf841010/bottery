@@ -1,0 +1,15 @@
+*.pyc
+vender
+.DS_Store
+.idea
+*.log
+*logs*
+*.wav
+test_result
+nohup.out
+clf.pkl
+test_html
+*.rdb
+config.py
+static/uploads/
+static/js/yolo_sign/config.js

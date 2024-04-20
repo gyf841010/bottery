@@ -1,0 +1,7 @@
+/**
+ * Created by gyf on 16/11/25.
+ */
+
+var post_url = 'http://yolo.anker.com/dashtop/yolo_sign'
+
+var post_detect_url = 'http://yolo.anker.com/dashtop/yolo_sign_url'

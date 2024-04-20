@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Yolo demos">
+
+    <title>Object Detection Demos</title>
+
+    <link href="https://cdn.bootcss.com/bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/static/js/yolo_sign/upload.js"></script>
+    <script src="/static/js/yolo_sign/config.js"></script>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/css/bootstrap-select.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/bootstrap-select.min.js"></script>
+
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.1/js/i18n/defaults-en_US.min.js"></script>
+
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            line-height: 1.5em;
+            color: #232323;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3 {
+            font-family: Times, serif;
+            line-height: 1.5em;
+            border-bottom: 1px solid #ccc;
+        }
+    </style>
+
+    <!-- Script to instantly classify an image once it is uploaded. -->
+    <script type="text/javascript">
+        $(document).ready(
+                function () {
+                    $('#detectFile').attr('disabled', true);
+                    $('#imageFile').change(
+                            function () {
+                                if ($(this).val()) {
+                                    $('#formupload').submit();
+                                }
+                            }
+                    );
+                }
+        );
+    </script>
+
+</head>
+<body>
+<!-- Begin page content -->
+<div class="container">
+    <div class="page-header">
+        <h1>Object Detection Demos</h1>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <label for="modelType">First select a model type:</label>
+            <!--<input type="modelType" class="form-control" id="modelType" placeholder="please select model type: taffic,yolo,etc.">-->
+            <select id="modelType" ="coco">
+            <option>yolo_traffic</option>
+            <option selected="true">yolo_coco</option>
+            <option>yolo_traffic_lisa</option>
+            <option>caffe_ssd_voc</option>
+            </select>
+        </div>
+    </div>
+
+    <form role="form" action="detectUrl" method="get">
+        <div class="form-group">
+            <div class="input-group">
+                <input type="text" class="form-control" name="imageUrl" id="imageUrl"
+                       placeholder="Provide an image URL">
+            <span class="input-group-btn">
+                <input class="btn btn-primary" value='Detect URL' type='button' id="detectUrlButton" name='submit'/>
+            </span>
+            </div><!-- /input-group -->
+        </div>
+    </form>
+
+    <form role="form">
+        <div class="row">
+            <div class="form-group col-sm-4">
+                <label for="inputFile">Or upload an image:</label>
+                <input type="file" id="inputFile" placeholder="Please select the picture you want to recognize.">
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <input value='Submit' type='button' id="uploadButton" name='submit'/>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="form-group col-sm-4">
+            <img id="myImage" src="">
+        </div>
+    </div>
+</div>
+<hr>
+<div class="container">
+    <div>
+        <h2>Video demo display</h2>
+    </div>
+    <iframe width="854" height="480" src="https://www.youtube.com/embed/VOC3huqHrss" frameborder="0"
+            allowfullscreen></iframe>
+</div>
+<hr>
+<div id="footer">
+    <div class="container">
+        <p>&copy; ANKER 2016</p>
+    </div>
+</div>
+</body>
+</html>
