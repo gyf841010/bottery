@@ -1,2 +1,2 @@
-SAVE_FOLDER = '/Users/gyf/git/z_lottery/static/save/'
+SAVE_FOLDER = '/home/gyf/bottery/static/save/'
 
