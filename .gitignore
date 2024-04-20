@@ -12,4 +12,5 @@ test_html
 *.rdb
 config.py
 static/uploads/
+static/save/
 static/js/yolo_sign/config.js

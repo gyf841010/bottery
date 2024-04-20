@@ -14,6 +14,9 @@ import logging
 from tornado.httpserver import HTTPServer
 
 import tornado.httputil
+import datetime
+import config
+import time
 
 define("port", default=20004, help="run on the given port", type=int)
 
@@ -66,7 +69,27 @@ class calcHandler(BaseHandler):
         return lottery
 
     def get(self):
-        lottery = self.gen_lottery()
+        today = datetime.date.today()
+        oneday = datetime.timedelta(days=1)
+        yesterday = today - oneday
+        lottery_open_time_str = str(today) + " 09:34:59"
+        lottery_open_time = time.strptime(lottery_open_time_str, '%Y-%m-%d %H:%M:%S')
+        open_timestamp = time.mktime(lottery_open_time)
+        now = time.time()
+        if now > open_timestamp:
+            f_dir = config.SAVE_FOLDER + str(today)
+            if os.path.isfile(f_dir):
+                with open(f_dir, 'r') as f:
+                    lottery = [int(str) for str in f.readline().split(',')]
+            else:
+                with open(f_dir, 'w') as f:
+                    lottery = self.gen_lottery()
+                    f.write(','.join(str(i) for i in lottery))
+        else:
+            f_dir = config.SAVE_FOLDER + str(yesterday)
+            with open(f_dir, 'r') as f:
+                lottery = [int(str) for str in f.readline().split(',')]
+
         return self.write(json.JSONEncoder().encode({'status': 0, 'lottery': lottery}))
 
 
