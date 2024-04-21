@@ -14,7 +14,7 @@ cp config.example.py config.py
 
 cp static/js/lottery/config.js.example static/js/lottery/config.js
 修改config.js为：
-var get_url = 'http://bottery.silksci.com/calc/gen'
+var get_url = 'http://127.0.0.1:20005/calc/gen'
 
 python sever.py -port=20005
 
