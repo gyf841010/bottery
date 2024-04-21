@@ -92,12 +92,14 @@ class calcHandler(BaseHandler):
                 with open(f_dir, 'w') as f:
                     lottery = self.gen_lottery()
                     f.write(','.join(str(i) for i in lottery))
+            date = today
         else:
             f_dir = config.SAVE_FOLDER + str(yesterday)
             with open(f_dir, 'r') as f:
                 lottery = [int(str) for str in f.readline().split(',')]
+                date = yesterday
 
-        return self.write(json.JSONEncoder().encode({'date': str(today), 'lottery': lottery}))
+        return self.write(json.JSONEncoder().encode({'date': str(date), 'lottery': lottery}))
 
 
 if __name__ == "__main__":
