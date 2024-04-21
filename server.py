@@ -28,7 +28,7 @@ logging.basicConfig(level=logging.DEBUG,
 class Application(tornado.web.Application):
     def __init__(self):
         handlers = [
-            (r'/', calcHandler),
+            (r'/', mainHandler),
             (r'/calc/gen', calcHandler),
         ]
         configs = dict(
@@ -53,6 +53,12 @@ class BaseHandler(tornado.web.RequestHandler):
         s = s.encode('utf-8')
         ret = s.replace("%", "%%")
         return "'%s'" % ret if len(ret) > 1 else "''"
+
+
+# main handler
+class mainHandler(BaseHandler):
+    def get(self):
+        return self.render("index.html")
 
 
 # calc handler
